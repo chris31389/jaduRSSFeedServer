@@ -88,6 +88,12 @@ module.exports = function(grunt) {
           '!**.min.js'
         ],
         dest: 'client/js/libs/' 
+      },
+      img: {
+        expand: true,
+        cwd: 'dev/img/',
+        src: '**',
+        dest: 'client/img/' 
       }
     },
     watch: {
