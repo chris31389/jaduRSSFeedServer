@@ -1,0 +1,16 @@
+/*! ClarendonParkDesigns 2015-03-03 */
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+/* Commented out a lot of contact stuff as it can have a background later */
+
+body, html {
+  font-family: 'Raleway', sans-serif;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  color: #5a5a5a;
+}
+
+#main{
+	padding-top:50px;
+	min-height:500px;
+}

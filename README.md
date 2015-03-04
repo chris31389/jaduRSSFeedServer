@@ -16,3 +16,17 @@ curl_init();
 file_get_contents();
 
 Both are also blocked.
+
+# jaduRSSFeedCleint
+A test feed for Jadu RSS Feed Client
+
+# Deployment Instructions
+
+> Make sure you have node installed to your system.  I use linux but its possible to install node on Windows and Mac.
+> Clone the git repository to a directory
+> run "npm install".  This will install the server and development depenencies needed to run and build the website.
+> run "grunt" to build the website based on the Gruntfile.js specifications.
+> EITHER run "node server.js" to start the node server and view at http://localhost:3000.
+> OR copy the client directory to an apache server to view via apache.
+
+Notes.  The client directory is purely HTML, CSS and JavaScript, hence its ability to be viewed without running any server-client software.
