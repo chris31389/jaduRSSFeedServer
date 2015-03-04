@@ -1,0 +1,37 @@
+10 minutes - I broke my time down into quickly designing the layout for the website.
+
+I then thought about the architecture.  I have been asked to do this in PHP so i need to have a client-server architecture.  I have been asked to do the parsing in PHP otherwise I would have tried to do it in JQuery or another JavaScript based library,  this would have benifited me because I would avoid downloading the RSS feed directly to the server.  This would mean I would have to open up various security doors to allow this functionality.  As i've been asked to do this in PHP i will have to open these doors and try to deal with them securely.
+
+20 minutes - For the design then, I decided on spliting the application into two parts.  The first part is the server side programming which will:
+	> store RSS feed links in DB or other state based storage.
+	> parse RSS feed into HTML code
+
+the second part to the application is the front page:
+	> display information to user.
+	> load stored rss links.
+	> allow user to add a new RSS feed.
+	> allow user to delete a new RSS feed
+	> post request to server to retrieve HTML on rss link.
+
+60 minutes - I went through trying to learn what PHP was, as i haven't used it for 5 years I needed a recap.  I discoved its a OOD language so I could transfer some skills I have from ASP.NET with C#.  
+
+30 minutes - Further to this I then generated my environment, creating a virtual linux server with LAMP installed to it.  I then installed SAMBA so I could transfer files to and from my windows machine.
+
+now I'm ready to start coding.
+
+60 minutes - I needed to look into how to read RSS feeds using PHP, discovering the PHP5 function simplexml_load_file() and file_get_contents();
+
+30 minutes - after some further research i've discovered this: http://www.w3schools.com/php/php_ajax_rss_reader.asp  Its an Ajax based RSS feed reader in PHP which is similar to what I want to do.  I'm going to look into replicating this on my site.
+
+20 minutes - Learnt how to debug PHP in browser
+  ini_set('display_errors', 'On');
+  echo var_dump(get_object_vars($xmlDoc));
+  echo var_dump(get_class_methods($xmlDoc));
+
+60 minutes - researching into effective database storage options.  Decided on SQLite http://zetcode.com/db/sqlitephp/
+	Make sure apache2, libapache2-mod-php5, php5-sqlite are installed.
+
+
+60 minutes - learning SQL lite and how to access it using PHP.
+	$db = new SQLite3('../db/test.db');
+	http://php.net/manual/en/sqlite3.open.php
