@@ -23,7 +23,7 @@
         $output = $db->Insert($summary->info);
       }
       else{
-        $output = $summary->ErrorMessage;
+        $output = $summary->GetError();
       }
       break;
 
