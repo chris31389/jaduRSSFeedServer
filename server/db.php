@@ -1,6 +1,6 @@
 <?php
 	class Db {
-		private $db;
+		protected $db;
 		
 		function Db($file){
 			$this->db = new SQLite3($file);

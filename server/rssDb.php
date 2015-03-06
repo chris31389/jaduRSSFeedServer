@@ -6,11 +6,11 @@
     private $deleteAll = "DELETE FROM rssFeeds;";
 
     function Select(){
-      return $db->Query($select);
+      return $this->Query($this->select);
     }
 
     function Delete(){
-      return $db->Query($deleteAll);
+      return $this->Query($this->deleteAll);
     }
 
     function Insert($arr){
@@ -19,7 +19,7 @@
         .$arr["name"].'\',\''
         .$arr["desc"].'\',\''
         .$arr["link"].'\');';
-      return $insert;// $db->Exec($insert);
+      return $this->Exec($insert);
     }
   }
 ?>

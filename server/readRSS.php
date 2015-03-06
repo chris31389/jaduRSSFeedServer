@@ -1,7 +1,7 @@
 <?php
 $feed_url = "http://www.php.net/news.rss";
+$feed_url = "http://slashdot.org/rss/slashdot.rss";
 $content = file_get_contents($feed_url);
-echo $content;
 $x = new SimpleXmlElement($content);
 echo "<ul>";
  

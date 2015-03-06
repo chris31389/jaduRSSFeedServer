@@ -14,7 +14,15 @@
       $scope.addFeed = function(url){
         var encodedUrl = encodeURIComponent(url);
         var newFeed = { url: encodedUrl};
-        RssFeed.save(newFeed);
+        RssFeed.save(newFeed,function(data){
+          if(data.error){
+            $scope.test = data;
+            return;
+          }
+
+          $scope.feeds = RssFeed.query();
+        });
+
       };
 
     }
