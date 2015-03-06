@@ -15,10 +15,6 @@
           templateUrl: 'partials/viewer.html',
           controller: 'RssListCtrl'
         })
-        .when('/add', {
-          templateUrl: 'partials/add.html',
-          controller: 'RssAddCtrl'
-        })
         .otherwise({
           redirectTo: '/view'
         });

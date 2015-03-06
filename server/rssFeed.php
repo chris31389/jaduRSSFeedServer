@@ -1,26 +1,37 @@
 <?php
+  // SQL INJECTION CAUTION!!! - option: change to NoSQL DB.
+  // FIX = NO VARIABLES ARE PASSED THAT HAVEN'T BEEN GENERATED. E.G. NO DIRECT LINK FROM USER VARIABLE TO SQL QUERY.
+
   ini_set('display_errors', 'On');
-  include 'db.php';
+  include 'rssDb.php';
+  include 'getRssSummary.php';
   $output = "";
-  $db = new Db();
+  $db = new RssDb("test.db");
 
   $reqMethod = $_SERVER['REQUEST_METHOD'];
-
   switch($reqMethod){
     case "GET":
-      $query = "SELECT * FROM rssFeeds;";
-      $output = $db->Query($query);
+      $output = $db->Select();
       break;
 
     case "POST":
-      $insert = 'INSERT INTO rssFeeds (rssUrl,name,desc,link) VALUES (\'http://slashdot.org/rss/slashdot.rss\',\'Slashdot\',\'News for nerds, stuff that matters\',\'http://slashdot.org/\');';
-      $output = $db->Exec($insert);
+      $request_body =file_get_contents("php://input");
+      $payload = json_decode($request_body);
+      $url = urldecode($payload->url);
+      $summary = new RssSummary($url);
+      if($summary->Validate()){
+        $output = $db->Insert($summary->info);
+      }
+      else{
+        $output = $summary->ErrorMessage;
+      }
       break;
+
+    case "DELETE":
+      $output = $db->Delete();
     
     default:
-      $query = "SELECT * FROM rssFeeds;";
-      $output = $db->Query($query);
+      $output = $db->Select();
   }
-
   echo $output;
 ?>

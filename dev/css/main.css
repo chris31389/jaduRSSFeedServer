@@ -10,9 +10,14 @@ body, html {
   color: #5a5a5a;
 }
 
-#main{
-	padding-top:50px;
-	min-height:500px;
+#view{
+  padding-top:50px;
+  min-height:500px;
+}
+
+#add{
+  padding-top:100px;
+  min-height:500px;
 }
 
 .feedOption{
@@ -27,4 +32,10 @@ body, html {
   display: -webkit-flex;
   display: flex;
   flex:1 1 auto;
+}
+
+.rssUrlInput{
+  width: -moz-calc(100% - 50px);
+  width: -webkit-calc(100% - 50px);
+  width: calc(100% - 50px);
 }

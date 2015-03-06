@@ -1,5 +1,4 @@
-
-<section id="main" class="container">
+<section id="view" class="container">
 <div class="row">
 	<div class="col-xs-4">
     <aside id="feed-{{feed.ID}}" ng-repeat="feed in feeds" class="feedOption">
@@ -8,6 +7,15 @@
         <span>>>>></span>
       </p>
       <p ng-bind="feed.desc"></p>
+    </aside>
+    <aside id="feed-add" class="feedOption">
+      <!--<p>New RSS Feed:</p>-->
+      <p>
+        <input type="text" name="rssUrl" ng-model="rssUrl" placeholder="New RSS Url" class="rssUrlInput" />
+        <button class="btn btn-default" ng-click="addFeed(rssUrl)">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+      </p>
     </aside>
 	</div>
 	<div class="col-xs-8">

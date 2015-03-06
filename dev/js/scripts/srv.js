@@ -8,6 +8,7 @@
     function($resource){
       return $resource('/server/rssFeed.php',{},{
         query: {method: 'GET', isArray: true},
+        save: {method: 'POST'}
       });
     }
   ]);

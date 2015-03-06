@@ -1,10 +1,9 @@
 <?php
 	class Db {
-		private $dbLoc = '../db/test.db'; 
 		private $db;
 		
-		function Db(){
-			$this->db = new SQLite3('test.db');
+		function Db($file){
+			$this->db = new SQLite3($file);
 		}
 
 		function Query($query){
