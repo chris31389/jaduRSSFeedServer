@@ -17,6 +17,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
+      options: {
+        globals: {
+          angular: true
+        }
+      },
       scripts: {
         src: ['dev/js/scripts/*.js']
       }
@@ -26,7 +31,11 @@ module.exports = function(grunt) {
         options: {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
-        src: ['dev/js/scripts/*.js'],
+        src: [
+          'dev/js/scripts/app.js',
+          'dev/js/scripts/ctrlr.js',
+          'dev/js/scripts/srv.js'
+        ],
         dest: 'client/js/main.js'
       },
       css: {
@@ -94,6 +103,12 @@ module.exports = function(grunt) {
         cwd: 'dev/img/',
         src: '**',
         dest: 'client/img/' 
+      },
+      partials: {
+        expand: true,
+        cwd: 'dev/html/partials/',
+        src: '**',
+        dest: 'client/partials/' 
       }
     },
     watch: {

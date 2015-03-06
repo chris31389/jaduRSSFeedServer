@@ -1,7 +1,21 @@
+# Deployment Instructions 
+  sudo cp -Rup {server,client} /var/www/html
+
+
+
+
+
+
+
+
+
 # jaduRSSFeedServer
 A test feed for Jadu RSS Feed Server
 
-
+# Deployment Instructions
+> Clone the git repository to a directory
+> run a copy command to copy the server folder to an apache server running PHP5.
+> make sure that the apt-get libaries: apache2, libapache2-mod-php5, php5-sqlite are installed.
 
 > NEED allow_url_fopen = 1 to allow simplexml_load_file($url) to work!
 http://jaspreetchahal.org/workaround-simplexml_load_file-function-simplexml-load-file-http-wrapper-is-disabled-in-the-server-configuration-by-allow_url_fopen0/

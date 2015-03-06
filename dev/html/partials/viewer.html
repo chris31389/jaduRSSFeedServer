@@ -1,0 +1,19 @@
+
+<section id="main" class="container">
+<div class="row">
+	<div class="col-xs-4">
+    <aside id="feed-{{feed.ID}}" ng-repeat="feed in feeds" class="feedOption">
+      <p>
+        <a href="{{feed.link}}" ng-bind="feed.name">Visit Site</a>
+        <span>>>>></span>
+      </p>
+      <p ng-bind="feed.desc"></p>
+    </aside>
+	</div>
+	<div class="col-xs-8">
+	Hi, {{ test }}
+
+
+	</div>
+</div>
+</section>
