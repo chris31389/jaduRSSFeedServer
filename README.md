@@ -1,6 +1,10 @@
 # Deployment Instructions 
   sudo cp -Rup {server,client} /var/www/html
 
+Test RSS feeds:
+  http://www.php.net/news.rss
+  http://slashdot.org/rss/slashdot.rss
+  http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml
 
 
 

@@ -50,7 +50,12 @@
   $reqMethod = $_SERVER['REQUEST_METHOD'];
   switch($reqMethod){
     case "GET":
-      $output = $db->Select();
+      if(!isset($_GET['id'])){
+        $output = $db->Select();
+      }else{
+        $output = $db->SelectID($_GET['id']);
+      }
+
       break;
 
     case "POST":

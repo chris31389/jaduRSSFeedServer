@@ -1,0 +1,41 @@
+<section id="view" class="container">
+<div class="row">
+	<div class="col-xs-4">
+    <div id="feed-{{feed.ID}}" ng-repeat="feed in feeds" class="feedOption">
+      <div class="row vertical-align row-eq-height">
+      <a class="homelink col-xs-1" href="{{feed.link}}">
+        <div class="glyphicon glyphicon-home" aria-hidden="true"></div>
+      </a>
+      <a class="feedlink col-xs-10" href="#" ng-click="showFeed(feed.ID)">
+        <p ng-bind="feed.name"></p>
+        <p ng-bind="feed.desc"></p>
+      </a>
+      </div>
+    </div>
+    <aside id="feed-add" class="feedOption">
+      <!--<p>New RSS Feed:</p>-->
+      <form class="form-inline">
+        <div id="rssUrlAdd" class="form-group maxWidth" ng-class="{'has-error': error}">
+          <div class="input-group maxWidth">
+            <input type="text" class="form-control" id="rssUrlinput" name="rssUrl" placeholder="New RSS Url" ng-model="rssUrl" />
+            <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="addFeed(rssUrl)">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            </span>
+          </div>
+          <div ng-show="error">
+            <label class="control-label" for="rssUrlinput">Input with error</label>
+          </div>
+        </div>
+      </form>
+    </aside>
+	</div>
+	<div class="col-xs-8">
+    <div ng-repeat="item in items" class="items">
+      <p ng-bind="item.url">
+      </p>
+    </div>
+	</div>
+</div>
+</section>

@@ -9,6 +9,10 @@
       return $this->Query($this->select);
     }
 
+    function SelectID($id){
+      return $this->Query("SELECT * FROM rssFeeds WHERE ID = ".$id.";");
+    }
+
     function Delete(){
       return $this->Query($this->deleteAll);
     }

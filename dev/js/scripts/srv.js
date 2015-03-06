@@ -6,9 +6,11 @@
   jaduServices.factory('RssFeed',[
     '$resource',
     function($resource){
-      return $resource('/server/rssFeed.php',{},{
+      return $resource('/server/rssFeed.php/',{},{
         query: {method: 'GET', isArray: true},
-        save: {method: 'POST'}
+        get: {method: 'GET', params: {id:'id=@id'}, isArray: true},
+        save: {method: 'POST'},
+        delete: {method:'DELETE'}
       });
     }
   ]);

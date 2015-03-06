@@ -21,8 +21,8 @@ body, html {
 }
 
 .feedOption{
-  padding-top:20px;
-  padding-bottom:20px;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 .col-eq{
@@ -35,7 +35,37 @@ body, html {
 }
 
 .rssUrlInput{
-  width: -moz-calc(100% - 50px);
-  width: -webkit-calc(100% - 50px);
-  width: calc(100% - 50px);
+  width: -moz-calc(100% - 60px);
+  width: -webkit-calc(100% - 60px);
+  width: calc(100% - 60px);
+}
+.maxWidth{
+  width:100%;
+}
+
+.homelink, .feedlink{
+  padding-left:0px;
+  padding-right:0px;
+  display: inline-block;
+  height:100%;
+}
+
+.homelink div{
+  padding-right:10px;
+}
+
+.feedlink{
+  background:#B2FFE6;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }
