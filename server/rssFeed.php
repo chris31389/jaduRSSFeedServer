@@ -34,17 +34,8 @@
       $arr = json_decode($jsonArr,true);
       $this->url = $arr[0]['rssUrl'];
       $this->errorMessage = "none";
-      $valid = true;
+      $this->valid = true;
       $this->info = $this->newArray($arr[0]['rssUrl'],$arr[0]['name'],$arr[0]['desc'],$arr[0]['link']);
-    }
-
-    private function newArray($url, $title, $desc, $link){
-      return array(
-          "rssUrl" => $url,
-          "name" => $title,
-          "desc" => $desc,
-          "link" => $link
-        );
     }
 
     // This is designed to read the RSS Reed Channel Header.
@@ -63,22 +54,56 @@
           $xml = new DOMDocument();
           $xml->load($url);
           $channel = $xml->getElementsByTagName('channel')->item(0);
-          $title = $channel->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
-          $link = $channel->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
-          $desc = $channel->getElementsByTagName('description')->item(0)->childNodes->item(0)->nodeValue;
-
-          $this->info = $this->newArray($url, $title, $desc, $link);
+          $infoArr = $this->getItemInfo($channel);
+          $this->info = $this->newArray($url, $infoArr['title'], $infoArr['desc'], $infoArr['link']);
         };
       }
+    }
+
+    private function newArray($url, $title, $desc, $link){
+      return array(
+          "rssUrl" => $url,
+          "name" => $title,
+          "desc" => $desc,
+          "link" => $link
+        );
+    }
+
+    private function getItemInfo($xmlElement){
+      $childs = $xmlElement->childNodes;
+      foreach($childs as $i) {
+        switch($i->nodeName){
+          case "description":
+            $desc = $i->nodeValue;
+            break;
+          case "title":
+            $title = $i->nodeValue;
+            break;
+          case "link":
+            $link = $i->nodeValue;
+            break;
+        }
+      }
+
+      return array(
+        "title" => $title,
+        "desc" => $desc,
+        "link" => $link
+      );
     }
 
     public function getFeed(){
       $arr = array();
 
       // GET ALL THE FEED INFORMATION AND POPULATE INTO ARRAY.
-      $arr[] = $this->info;
-      
-
+      if($this->valid == true){
+        $xml = new DOMDocument();
+        $xml->load($this->url);
+        $items = $xml->getElementsByTagName('item');
+        foreach($items as $item){
+          $arr[] = $this->getItemInfo($item);
+        }
+      };
       return json_encode($arr);
     }
 

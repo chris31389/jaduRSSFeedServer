@@ -19,7 +19,7 @@
 
     function Insert($arr){
       $insert = 'INSERT INTO rssFeeds (rssUrl,name,desc,link) VALUES (\''
-        .$arr["url"].'\',\''
+        .$arr["rssUrl"].'\',\''
         .$arr["name"].'\',\''
         .$arr["desc"].'\',\''
         .$arr["link"].'\');';

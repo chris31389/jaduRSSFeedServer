@@ -5,9 +5,10 @@ Test RSS feeds:
   http://www.php.net/news.rss
   http://slashdot.org/rss/slashdot.rss
   http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml
+  http://news.google.com/news?ned=us&topic=h&output=rss
 
 
-
+[{"ID":1,"rssUrl":"http:\/\/www.php.net\/news.rss","name":"PHP: Hypertext Preprocessor","desc":"The PHP scripting language web site","link":"http:\/\/php.net\/"}]
 
 
 

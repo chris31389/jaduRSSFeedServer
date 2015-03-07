@@ -33,11 +33,11 @@
 	</div>
 	<div class="col-xs-8">
     <div ng-repeat="item in items" class="items">
-      <p ng-bind="item.ID"></p>
-      <p ng-bind="item.rssUrl"></p>
-      <p ng-bind="item.name"></p>
-      <p ng-bind="item.desc"></p>
-      <p ng-bind="item.link"></p>
+      <a href="{{item.link}}">
+        <h5 ng-bind="item.title">
+        </h5>
+      </a>
+      <p ng-bind-html="item.desc | sanitize" class="tab"></p>
     </div>
 	</div>
 </div>
