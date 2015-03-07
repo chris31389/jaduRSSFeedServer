@@ -7,6 +7,11 @@
     '$scope',
     'RssFeed',
     function($scope,RssFeed){
+
+      var isInt = function(value) {
+        return !isNaN(value) && parseInt(Number(value)) === value && !isNaN(parseInt(value, 10));
+      };
+
       $scope.items = [];
       $scope.error = false;
 
@@ -36,8 +41,14 @@
       };
 
       $scope.showFeed = function(id){
-        var item = RssFeed.get({ 'id' : id });
-        $scope.items = [item];
+        // protecting against SQL INJECTION
+        if (isInt(id)){
+          var item = RssFeed.get({ 'id' : id });
+          $scope.items = item;
+        }
+        else{
+          $scope.items = "";
+        }
       };
     }
   ]);

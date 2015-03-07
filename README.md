@@ -1,5 +1,5 @@
 # Deployment Instructions 
-  sudo cp -Rup {server,client} /var/www/html
+  sudo cp -Rup {server,client,index.php} /var/www/html
 
 Test RSS feeds:
   http://www.php.net/news.rss

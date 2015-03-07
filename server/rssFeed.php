@@ -7,12 +7,14 @@
   $output;
   $db = new RssDb("test.db");
 
+  // Sumamry information on RSS Feed.
   class RssFeed{
     private $url = "";
     public $errorMessage = "unknown";
     public $valid = false;
     public $info = array();
 
+    // This is designed to read the RSS Reed Channel Header.
     function RssFeed($url){
       $this->url = $url;
       $headers = @get_headers($url);
@@ -50,7 +52,9 @@
   $reqMethod = $_SERVER['REQUEST_METHOD'];
   switch($reqMethod){
     case "GET":
-      if(!isset($_GET['id'])){
+
+      // PREVENTING SQL INJECTION BY MAKING SURE id IS INTEGER
+      if(!isset($_GET['id']) || !is_int($_GET['id'])){
         $output = $db->Select();
       }else{
         $output = $db->SelectID($_GET['id']);
