@@ -1,8 +1,7 @@
 <?php
   // SQL INJECTION CAUTION!!! - option: change to NoSQL DB.
-  // FIX = NO VARIABLES ARE PASSED THAT HAVEN'T BEEN GENERATED. E.G. NO DIRECT LINK FROM USER VARIABLE TO SQL QUERY.
 
-  ini_set('display_errors', 'On');
+  // ini_set('display_errors', 'On');
   include 'rssDb.php';
   $output;
   $db = new RssDb("test.db");

@@ -1,51 +1,31 @@
-# Deployment Instructions 
-  sudo cp -Rup {server,client,index.php} /var/www/html
+# Pre instuctions.  Please make sure you have NodeJS installed.  The following are instructions to install nodeJS using ubuntu. (https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
+  1. run the install nodejs and npm command:
+    sudo apt-get update
+    sudo apt-get install nodejs
+    sudo apt-get install npm
+  2. We also require Grunt to deploy the application.  run this command to install the cli:
+    npm install -g grunt-cli
+  3. To make sure that we have our server and php packages installed we can run:
+    sudo apt-get install apache2
+    sudo apt-get install libapache2-mod-php5
+    sudo apt-get install php5-sqlite
 
-Test RSS feeds:
+# Deployment Instructions 
+  1. navigate to the directory that you have checked out the git project.
+  2. run the following command to install the deployment packages:
+    npm install
+  3. run grunt to build our application:
+    grunt 
+  2. run the following command:
+    sudo cp -Rup {server,client,index.php} /var/www/html
+
+# Test RSS feeds:
   http://www.php.net/news.rss
   http://slashdot.org/rss/slashdot.rss
   http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml
   http://news.google.com/news?ned=us&topic=h&output=rss
 
+# Further Notes:
+  You may need to open up the apache2 server to allow the php script to access external rss links. We can change the php.ini file to set allow_url_fopen = 1 so we can allow file_get_contents($url) to work! (http://jaspreetchahal.org/workaround-simplexml_load_file-function-simplexml-load-file-http-wrapper-is-disabled-in-the-server-configuration-by-allow_url_fopen0/)
 
-[{"ID":1,"rssUrl":"http:\/\/www.php.net\/news.rss","name":"PHP: Hypertext Preprocessor","desc":"The PHP scripting language web site","link":"http:\/\/php.net\/"}]
-
-
-
-
-
-# jaduRSSFeedServer
-A test feed for Jadu RSS Feed Server
-
-# Deployment Instructions
-> Clone the git repository to a directory
-> run a copy command to copy the server folder to an apache server running PHP5.
-> make sure that the apt-get libaries: apache2, libapache2-mod-php5, php5-sqlite are installed.
-
-> NEED allow_url_fopen = 1 to allow simplexml_load_file($url) to work!
-http://jaspreetchahal.org/workaround-simplexml_load_file-function-simplexml-load-file-http-wrapper-is-disabled-in-the-server-configuration-by-allow_url_fopen0/
-http://phpsec.org/projects/phpsecinfo/tests/allow_url_fopen.html
-If enabled, allow_url_fopen allows PHP's file functions -- such as file_get_contents() and the include and require statements -- can retrieve data from remote locations, like an FTP or web site. Programmers frequently forget this and don't do proper input filtering when passing user-provided data to these functions, opening them up to code injection vulnerabilities. A large number of code injection vulnerabilities reported in PHP-based web applications are caused by the combination of enabling allow_url_fopen and bad input filtering.
-
-allow_url_fopen is on by default.
-
-
-alternatives:
-curl_init();
-file_get_contents();
-
-Both are also blocked.
-
-# jaduRSSFeedCleint
-A test feed for Jadu RSS Feed Client
-
-# Deployment Instructions
-
-> Make sure you have node installed to your system.  I use linux but its possible to install node on Windows and Mac.
-> Clone the git repository to a directory
-> run "npm install".  This will install the server and development depenencies needed to run and build the website.
-> run "grunt" to build the website based on the Gruntfile.js specifications.
-> EITHER run "node server.js" to start the node server and view at http://localhost:3000.
-> OR copy the client directory to an apache server to view via apache.
-
-Notes.  The client directory is purely HTML, CSS and JavaScript, hence its ability to be viewed without running any server-client software.
+  The client directory is purely HTML, CSS and JavaScript,  we only need the apache server for the php scripts in the server folder.
