@@ -112,23 +112,22 @@
     }
   }
 
-  $reqMethod = $_SERVER['REQUEST_METHOD'];
-  switch($reqMethod){
+  switch($_SERVER['REQUEST_METHOD']){
     case "GET":
 
       // PREVENTING SQL INJECTION BY MAKING SURE id IS INTEGER
-      if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
-        $output = $db->Select();
-      }else{
+      if(isset($_GET['id']) && is_numeric($_GET['id'])){
         $info = $db->SelectID($_GET['id']);
         $rss = RssFeed::withJsonArray($info);
         $output = $rss->getFeed();
+      }else{
+        $output = $db->Select();
       }
 
       break;
 
     case "POST":
-      $request_body =file_get_contents("php://input");
+      $request_body = file_get_contents("php://input");
       $payload = json_decode($request_body);
       $url = urldecode($payload->url);
       $feed = RssFeed::withURL($url);
@@ -141,8 +140,13 @@
       break;
 
     case "DELETE":
-      $output = $db->Delete();
-    
+      parse_str($_SERVER['QUERY_STRING'],$outputArray);
+      if(isset($outputArray['id']) && is_numeric($outputArray['id'])){
+        $output = $db->DeleteID($outputArray['id']);
+      }else{
+        $output = $db->Delete();
+      }
+      break;
     default:
       $output = $db->Select();
   }

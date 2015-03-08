@@ -14,7 +14,11 @@
     }
 
     function Delete(){
-      return $this->Query($this->deleteAll);
+      return $this->Exec($this->deleteAll);
+    }
+
+    function DeleteID($id){
+      return $this->Exec("DELETE FROM rssFeeds WHERE ID = ".$id.";");
     }
 
     function Insert($arr){

@@ -10,7 +10,8 @@
         query: {method: 'GET', isArray: true},
         get: {method: 'GET', params: {id:'id=@id'}, isArray: true},
         save: {method: 'POST'},
-        delete: {method:'DELETE'}
+        delete: {method:'DELETE'},
+        remove: {method:'DELETE', params: {id:'id=@id'}}
       });
     }
   ]);

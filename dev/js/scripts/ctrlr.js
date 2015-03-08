@@ -50,6 +50,14 @@
           $scope.items = "";
         }
       };
+
+      $scope.deleteId = function(id){
+        if(isInt(id)){
+          var item = RssFeed.remove({ 'id' : id }, function(){
+            $scope.feeds = RssFeed.query();
+          });
+        }
+      };
     }
   ]);
 

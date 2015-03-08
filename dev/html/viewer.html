@@ -3,9 +3,14 @@
 	<div class="col-xs-4">
     <div id="feed-{{feed.ID}}" ng-repeat="feed in feeds" class="feedOption">
       <div class="row vertical-align row-eq-height">
-      <a class="homelink col-xs-1" href="{{feed.link}}">
-        <div class="glyphicon glyphicon-home" aria-hidden="true"></div>
-      </a>
+      <div class="col-xs-1 homelink">
+        <a class="" href="{{feed.link}}">
+          <div class="glyphicon glyphicon-home" aria-hidden="true"></div>
+        </a>
+        <a class="" href="#" ng-click="deleteId(feed.ID)">
+          <div class="glyphicon glyphicon-remove" aria-hidden="true"></div>
+        </a>
+      </div>
       <a class="feedlink col-xs-10" href="#" ng-click="showFeed(feed.ID)">
         <p ng-bind="feed.name"></p>
         <p ng-bind="feed.desc"></p>
