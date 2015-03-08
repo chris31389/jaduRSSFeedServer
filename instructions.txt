@@ -1,0 +1,31 @@
+# Pre instuctions.  Please make sure you have NodeJS installed.  The following are instructions to install nodeJS using ubuntu. (https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
+  1. run the install nodejs and npm command:
+    sudo apt-get update
+    sudo apt-get install nodejs
+    sudo apt-get install npm
+  2. We also require Grunt to deploy the application.  run this command to install the cli:
+    npm install -g grunt-cli
+  3. To make sure that we have our server and php packages installed we can run:
+    sudo apt-get install apache2
+    sudo apt-get install libapache2-mod-php5
+    sudo apt-get install php5-sqlite
+
+# Deployment Instructions 
+  1. navigate to the directory that you have checked out the git project.
+  2. run the following command to install the deployment packages:
+    npm install
+  3. run grunt to build our application:
+    grunt 
+  2. run the following command:
+    sudo cp -Rup {server,client,index.php} /var/www/html
+
+# Test RSS feeds:
+  http://www.php.net/news.rss
+  http://slashdot.org/rss/slashdot.rss
+  http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml
+  http://news.google.com/news?ned=us&topic=h&output=rss
+
+# Further Notes:
+  You may need to open up the apache2 server to allow the php script to access external rss links. We can change the php.ini file to set allow_url_fopen = 1 so we can allow file_get_contents($url) to work! (http://jaspreetchahal.org/workaround-simplexml_load_file-function-simplexml-load-file-http-wrapper-is-disabled-in-the-server-configuration-by-allow_url_fopen0/)
+
+  The client directory is purely HTML, CSS and JavaScript,  we only need the apache server for the php scripts in the server folder.

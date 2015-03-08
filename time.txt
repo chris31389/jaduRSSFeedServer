@@ -1,0 +1,40 @@
+10 minutes - I broke my time down into quickly designing the layout for the website.
+
+I then thought about the architecture.  I have been asked to do this in PHP so i need to have a client-server architecture.  An alternative could have been to parse in JQuery or another JavaScript based library so as to avoid downloading files from the web directly to the server and do everything on the clients browser.  
+
+20 minutes - For the design, I decided on spliting the application into two parts.  The first part is the server side programming which will:
+	> store RSS feed links in DB or other state based storage.
+	> parse RSS feed into HTML code
+  > deal with http GET, POST, PUT and DELETE requests.
+
+the second part to the application is the client web page:
+	> display information to user.
+	> load stored rss links.
+	> allow user to add a new RSS feed.
+	> allow user to delete a new RSS feed
+	> post request to server to retrieve HTML on rss link.
+
+60 minutes - I went through trying to learn what PHP was, as i haven't used it for 5 years I needed a recap.  I discoved its a OOD language so I could transfer some skills I have from ASP.NET with C#.  I can take advantage of this and use classes to reuse parts of my code.
+
+30 minutes - Further to this I then generated my environment, creating a virtual linux server with LAMP installed to it.  I then installed SAMBA so I could transfer files to and from my windows machine.
+
+30 minutes - I've installed grunt and initialied the Gruntfile.js so I can use this to easily deploy my application.
+
+now I'm ready to start coding.
+
+120 minutes - I needed to look into how to read RSS feeds using PHP, discovering the PHP5 function simplexml_load_file() and file_get_contents();  This also included creating test php scripts as prototypes to check functionality existed.
+
+120 minutes - researching into effective database storage options.  Decided on SQLite http://zetcode.com/db/sqlitephp/
+	Make sure apache2, libapache2-mod-php5, php5-sqlite are installed.
+  Created classes to access the SQLite database on our behalf.
+
+240 minutes - created the initial version of the GET, POST, PUT and DELETE php script with a class for the RssFeed.  This was allowing me to get information from the database.
+
+240 minutes - Now i've got something working I can start coding the front page of my website.  I drafted up an angular webpage and various libraries to allow me to make http requests in a sensible fashion.
+
+240 minutes - improved on the initial version by adding GET with no query strings to return all summary information and GET with a query string for ID to return all the items on the RSS feed for that one ID.
+
+120 minutes - I then got the DELETE working.
+
+
+TOTAL WORKING TIME: 20.5 Hours.
